@@ -1,0 +1,94 @@
+<head>
+  <title>Meme App</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="text-center">
+      <div class="row justify-content-md-center align-items-center">
+        <div class="col col-lg-2 align-self-center">
+          <button id="prev-image-id" type="button" class="btn btn-info">
+            Prev
+          </button>
+        </div>
+        <div class="col-12 col-md-auto align-self-center">
+          <div class="card">
+            <img
+              id="meme-image-id"
+              class="card-img-top meme-block"
+              src=""
+              alt="Card image cap"
+            />
+            <div class="card-block">
+              <p id="meme-title-id" class="card-text">
+                UPDATE THE TITLE HERE!!!
+              </p>
+              <p id="meme-likes-id" class="card-text">
+                UPDATE THE LIKE NUMBER HERE
+              </p>
+              <div>
+                <button
+                  id="like-button-id"
+                  type="button"
+                  class="btn btn-success"
+                >
+                  Like
+                </button>
+                <button
+                  id="dislike-button-id"
+                  type="button"
+                  class="btn btn-danger"
+                >
+                  Dislike
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-lg-2 align-self-center">
+          <button id="next-image-id" type="button" class="btn btn-info">
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    // Set up memes.
+    let memes = [];
+    for (let i = 0; i < MEME_URLS.length; i++) {
+      // Create a new meme with the ID is i, meme URL and meme title.
+      const aMeme = new Meme(i, MEME_URLS[i], MEME_TITLES[i]);
+      memes.push(aMeme);
+      console.log(aMeme);
+    }
+
+    // SET UP THE CONTROLLER
+    const memeCtrl = new MemeController(memes, 0);
+    setUpButton(memeCtrl);
+  </script>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+</body>

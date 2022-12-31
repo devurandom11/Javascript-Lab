@@ -1,0 +1,14 @@
+#welcome-container {
+  text-align: center;
+  margin: 16px;
+}
+
+form {
+  padding: 16px;
+  max-width: 500px;
+}
+
+button {
+  margin-top: 16px;
+  margin-right: 8px;
+}

@@ -1,0 +1,14 @@
+// Include any default variable overrides here (though functions won't be available)
+$light: #c6d9e1;
+$white: #fff;
+$dark: #050604;
+$primary: #3f23a4;
+$secondary: #ff1a30;
+$info: #918028;
+$success: gold;
+$warning: #dfca00;
+$danger: #ed2000;
+
+//
+@import "../node_modules/bootstrap/scss/bootstrap";
+// Then add additional custom code here

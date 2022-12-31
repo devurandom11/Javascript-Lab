@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>repl.it</title>
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Happy Paws</a>
+      <a class="form-inline my-2 my-lg-0" href="#">&#128062;</a>
+    </nav>
+    <div id="welcome-container">
+      <h1>Welcome to Happy Paws Daycare!</h1>
+      <p class="lead">Let's take care of your pets!</p>
+    </div>
+
+    <form
+      name="pet-info-form"
+      onsubmit="return validateForm()"
+      action="https://postman-echo.com/post"
+      method="post"
+    >
+      <legend>Pet information</legend>
+
+      <label for="pet-name-input-group">Pet's name</label>
+      <!--TODO: Make this field required and it must be at max 20 characters -->
+      <input
+        type="text"
+        class="form-control"
+        id="pet-name"
+        placeholder="Fido"
+        pattern="[a-z A-Z]{1,20}"
+        required
+      />
+      <small class="form-text text-muted"
+        >Required. Must contain up to 20 alphabetical characters</small
+      >
+
+      <label for="pet-age-input-group">Pet's age</label>
+      <!--TODO: Make this field a required number and make the input to be at least 1 and at most 15 -->
+      <input
+        class="form-control"
+        id="pet-age"
+        placeholder="5"
+        min="1"
+        max="15"
+        type="number"
+        required
+      />
+      <small class="form-text text-muted"
+        >Required. 1 year old minimum age and 15 years old maximum age</small
+      >
+
+      <label for="owner-email-address-group">Email address</label>
+      <!--TODO: Make this input an email input, make the place holder "abc@xyz" and make it required -->
+      <input
+        class="form-control"
+        id="email-address"
+        type="email"
+        placeholder="abc@xyz"
+        required
+      />
+      <small class="form-text text-muted"
+        >Required. Must contain a valid email address</small
+      >
+
+      <label for="owner-phone-number-group">Phone number</label>
+      <!--TODO: Make this field required, and add a check for the phone number in the format of XXX-XXX-XXXX -->
+      <input
+        class="form-control"
+        id="phone-number"
+        type="tel"
+        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        placeholder="XXX-XXX-XXXX"
+        required
+      />
+      <small class="form-text text-muted"
+        >Required. Must contain numbers and dashes in the format of
+        XXX-XXX-XXXX</small
+      >
+
+      <label for="pet-size-group">Pet's size</label>
+      <select class="form-control" id="pet-size">
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+        <option>X-Large</option>
+      </select>
+      <small class="form-text text-muted">Required. Must select a size</small>
+
+      <legend>Pet's gender</legend>
+      <label class="form-check-label">
+        <input
+          type="radio"
+          class="form-check-input"
+          name="pet-gender"
+          value="female"
+          checked=""
+        />
+        Female
+      </label>
+      <label class="form-check-label">
+        <input
+          type="radio"
+          class="form-check-input"
+          name="pet-gender"
+          value="male"
+        />
+        Male
+      </label>
+
+      <legend>Current vaccinations</legend>
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" value="Bordetella" />
+        Bordetella (every 6 months required)
+      </label>
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" value="DHLPP" />
+        DHLPP (1 year or 3 year is acceptable)
+      </label>
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" value="Rabies" />
+        Rabies (1 year or 3 year is acceptable)
+      </label>
+      <!-- TODO: Add a check in the script.js to make sure that if a user does not select all of the vaccinations above, they must provide an explanation in the text area below. -->
+      <small class="form-text text-muted"
+        >Required. Pets should be vaccinated with all of the above. If not,
+        please specify why in the textbox below.
+      </small>
+
+      <legend for="other-information">Other information</legend>
+      <label
+        >Please specify any medication or any conditions of the pet that we
+        should be aware of</label
+      >
+      <textarea
+        class="form-control"
+        id="other-info-text-area"
+        rows="3"
+      ></textarea>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+  </body>
+</html>
