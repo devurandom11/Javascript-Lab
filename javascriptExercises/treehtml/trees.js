@@ -40,24 +40,33 @@ const createTreeHTML = (node) => {
 const createTreeHTML2 = (node, level = 0) => {
   if (!node) return;
   const div = document.createElement("div");
-  div.innerHTML = `${"&nbsp;&nbsp;".repeat(level * 2)}${
-    level > 0 ? "↳ " : ""
-  }Node name: ${node.nodeName} Value: ${node.value}`;
-  node.children.forEach((child) =>
-    div.appendChild(createTreeHTML2(child, level + 1))
-  );
+  if (level > 0) {
+    div.innerHTML = `${"&nbsp;&nbsp;".repeat(level - 1)}${
+      level > 0 ? "|_" : ""
+    }> Node name: ${node.nodeName} Value: ${node.value}`;
+    node.children
+      .filter((child) => child !== null)
+      .forEach((child) => div.appendChild(createTreeHTML2(child, level + 1)));
+  } else {
+    div.innerHTML = `${"&nbsp;&nbsp;".repeat(level)}${
+      level > 0 ? "|_" : ""
+    }> Node name: ${node.nodeName} Value: ${node.value}`;
+    node.children
+      .filter((child) => child !== null)
+      .forEach((child) => div.appendChild(createTreeHTML2(child, level + 1)));
+  }
   return div;
 };
 
 const main = async () => {
   const nodeList = await generateTree();
   const root = await buildTree(nodeList, "A");
-  const treeHTML = createTreeHTML(root);
-  console.dir(`The node list is:\n${nodeList}`, {
-    depth: null,
-    maxArrayLength: null,
-  });
-  document.body.appendChild(treeHTML);
+  if (root !== null) {
+    const treeHTML = createTreeHTML2(root);
+    document.body.appendChild(treeHTML);
+    const boxHTML = createTreeHTML(root);
+    document.body.appendChild(boxHTML);
+  }
 };
 
 main();
